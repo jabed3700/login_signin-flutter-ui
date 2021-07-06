@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:login/component/rounded_button.dart';
+import 'package:login/constant.dart';
+
+import 'background.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -6,30 +11,38 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
-    return Container(
-      height: size.height,
-      width: double.infinity,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Positioned(
-            top: 0,
-            left: 0,
-            child: Image.asset(
-              "assets/images/main_top.png",
-              width: size.width * .3,
+    return Background(
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "WELCOME TO TAKWASOFT",
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
-          ),
-          Positioned(
-            left: 0,
-            bottom: 0,
-            child: Image.asset(
-              "assets/images/main_bottom.png",
-              width: size.width * .2,
+            SizedBox(
+              height: size.height * .05,
             ),
-          )
-        ],
+            SvgPicture.asset(
+              "assets/icons/chat.svg",
+              height: size.height * .45,
+            ),
+            SizedBox(
+              height: size.height * .05,
+            ),
+            RoundedButton(
+              press: () {},
+              text: 'LOGIN',
+              color: kPrimaryColor,
+            ),
+            RoundedButton(
+              press: () {},
+              text: 'SIGNUP',
+              color: kPrimaryLightColor,
+              textColor: Colors.black,
+            ),
+          ],
+        ),
       ),
     );
   }
