@@ -11,9 +11,23 @@ class Body extends StatelessWidget {
       height: size.height,
       width: double.infinity,
       child: Stack(
+        alignment: Alignment.center,
         children: [
           Positioned(
-            child: Image.asset("assets/images/main_top.png"),
+            top: 0,
+            left: 0,
+            child: Image.asset(
+              "assets/images/main_top.png",
+              width: size.width * .3,
+            ),
+          ),
+          Positioned(
+            left: 0,
+            bottom: 0,
+            child: Image.asset(
+              "assets/images/main_bottom.png",
+              width: size.width * .2,
+            ),
           )
         ],
       ),
