@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:login/Screens/Login/login_screen.dart';
 import 'package:login/component/rounded_button.dart';
 import 'package:login/constant.dart';
 
@@ -31,7 +32,11 @@ class Body extends StatelessWidget {
               height: size.height * .05,
             ),
             RoundedButton(
-              press: () {},
+              press: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return LoginScreen();
+                }));
+              },
               text: 'LOGIN',
               color: kPrimaryColor,
             ),
