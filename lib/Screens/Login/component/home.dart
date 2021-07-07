@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:login/Screens/Login/component/background.dart';
+import 'package:login/Screens/Login/component/rounded_input_feild.dart';
+import 'package:login/component/already_have_account_check.dart';
+import 'package:login/component/rounded_button.dart';
+import 'package:login/component/rounded_password_feild.dart';
+import 'package:login/component/text_feild_container.dart';
 import 'package:login/constant.dart';
 
 class Body extends StatelessWidget {
@@ -16,52 +21,40 @@ class Body extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "Login",
+            "LOGIN",
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
+          ),
+          SizedBox(
+            height: size.height * .03,
           ),
           SvgPicture.asset(
             "assets/icons/login.svg",
             height: size.height * .35,
           ),
-          TextFeildContainer(
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: 'Your Email',
-                icon: Icon(
-                  Icons.person,
-                  color: kPrimaryColor,
-                ),
-                border: InputBorder.none,
-              ),
-            ),
+          SizedBox(
+            height: size.height * .03,
+          ),
+          RoundedInputFeild(
+            hintText: "Your Email",
+            onChanged: (value) {},
+          ),
+          RoundedPasswordFeild(
+            onChanged: (value) {},
+          ),
+          RoundedButton(
+            text: "LOGIN",
+            press: () {},
+            color: kPrimaryColor,
+          ),
+          AlreadyHaveAccountCheck(
+            press: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>return SignUpScreen(),));
+            },
           )
         ],
       ),
-    );
-  }
-}
-
-class TextFeildContainer extends StatelessWidget {
-  final Widget child;
-  const TextFeildContainer({
-    Key? key,
-    required this.child,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      margin: EdgeInsets.symmetric(vertical: 10),
-      width: size.width * .8,
-      decoration: BoxDecoration(
-        color: kPrimaryLightColor,
-        borderRadius: BorderRadius.circular(29),
-      ),
-      child: child,
     );
   }
 }
